@@ -30,10 +30,6 @@ public class BasicItem implements Item {
         this.listener = listener;
     }
 
-    public static BasicItem create(ItemStack stack, Predicate<Player> predicate) {
-        return new BasicItem(stack, (player, action) -> predicate.test(player));
-    }
-
     public static BasicItem create(ItemStack stack, ItemListener listener) {
         return new BasicItem(stack, listener);
     }

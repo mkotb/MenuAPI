@@ -22,11 +22,11 @@ import io.mazenmc.menuapi.menu.Menu;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
-import java.util.function.Predicate;
 
 public final class MenuFactory {
 
@@ -44,10 +44,6 @@ public final class MenuFactory {
         return BasicItem.create(stack, listener);
     }
 
-    public static Item createItem(ItemStack stack, Predicate<Player> listener) {
-        return BasicItem.create(stack, listener);
-    }
-
     public static Item createItem(ItemListener listener, Material material, String name, String... lore) {
         ItemStack stack = new ItemStack(material);
         ItemMeta meta = stack.getItemMeta();
@@ -59,11 +55,7 @@ public final class MenuFactory {
         return createItem(stack, listener);
     }
 
-    public static Item createItem(Predicate<Player> predicate, Material material, String name, String... lore) {
-        return createItem((p, c) -> predicate.test(p), material, name, lore);
-    }
-
     public static void dispose(Menu menu) {
-
+        HandlerList.unregisterAll(menu);
     }
 }

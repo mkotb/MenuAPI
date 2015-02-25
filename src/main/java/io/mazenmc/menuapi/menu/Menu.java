@@ -119,7 +119,7 @@ public class Menu implements Listener {
 
     @EventHandler
     public void onDrag(InventoryDragEvent event) {
-        if(!event.getInventory().equals(inventory)) // compare references
+        if(!event.getInventory().equals(inventory))
             return;
 
         event.setCancelled(true);
