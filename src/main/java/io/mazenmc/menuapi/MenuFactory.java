@@ -62,4 +62,8 @@ public final class MenuFactory {
     public static Item createItem(Predicate<Player> predicate, Material material, String name, String... lore) {
         return createItem((p, c) -> predicate.test(p), material, name, lore);
     }
+
+    public static void dispose(Menu menu) {
+
+    }
 }
