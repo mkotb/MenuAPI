@@ -32,10 +32,23 @@ public final class MenuFactory {
 
     private MenuFactory() {}
 
+    /**
+     * Creates a menu with the inputted specifications
+     * @param name Name of the menu
+     * @param size Size of the menu
+     * @return The generated menu
+     */
     public static Menu createMenu(String name, int size) {
         return Menu.createMenu(name, size);
     }
 
+    /**
+     * Creates a menu with the inputted specifications
+     * @param name Name of the menu
+     * @param size Size of the menu
+     * @param parent The parent of this menu, displayed to the user when it exits this one
+     * @return The generated menu
+     */
     public static Menu createMenu(String name, int size, Menu parent) {
         return createMenu(name, size).setParent(parent);
     }
@@ -55,6 +68,10 @@ public final class MenuFactory {
         return createItem(stack, listener);
     }
 
+    /**
+     * Disposes of the menu, reduces retention on the menu
+     * @param menu The menu you wish to dispose
+     */
     public static void dispose(Menu menu) {
         HandlerList.unregisterAll(menu);
     }

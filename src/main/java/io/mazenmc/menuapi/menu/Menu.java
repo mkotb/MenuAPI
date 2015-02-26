@@ -52,41 +52,82 @@ public class Menu implements Listener {
         return new Menu(name, size);
     }
 
+    /**
+     * The name of this menu, with translated color codes
+     * @return The name
+     */
     public String name() {
         return name;
     }
 
+    /**
+     * The size of this menu
+     * @return The size of this menu
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * The inventory representation of this menu
+     * @return The inventory representation
+     */
     public Inventory inventory() {
         return inventory;
     }
 
+    /**
+     * Returns the item at specified index
+     * @param index
+     * @return Found item
+     */
     public Item itemAt(int index) {
         return items.get(index);
     }
 
+    /**
+     * Returns the item at specified coordinates, where x is on the horizontal axis and z is on the vertical axis.
+     * @param x The x coordinate
+     * @param z The z coordinate
+     * @return Found item
+     */
     public Item itemAt(int x, int z) {
         return items.get(z * 9 + x);
     }
 
+    /**
+     * Sets the item at the specified index
+     * @param index Index of the item you wish to set
+     * @param item The item you wish to set the index as
+     */
     public Menu setItem(int index, Item item) {
-        items.put(index, item);
         inventory.setItem(index, item.stack());
+        items.put(index, item);
         return this;
     }
 
+    /**
+     * Sets the item at the specified coordinates, where x is on the horizontal axis and z is on the vertical axis.
+     * @param x The x coordinate
+     * @param z The z coordinate
+     * @param item The item you wish to set the index as
+     */
     public Menu setItem(int x, int z, Item item) {
-        return setItem(z * 9 + z, item);
+        return setItem(z * 9 + x, item);
     }
 
+    /**
+     * Sets the parent of the menu, used when the player exits the menu
+     */
     public Menu setParent(Menu parent) {
         this.parent = parent;
         return this;
     }
 
+    /**
+     * Show the menu to the inputted players
+     * @param players The players you wish to show the menu too
+     */
     public void showTo(Player... players) {
         for (Player p : players) {
             p.openInventory(inventory);
