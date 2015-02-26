@@ -6,7 +6,7 @@
 
     <groupId>io.mazenmc</groupId>
     <artifactId>menuapi</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <name>MenuAPI</name>
     <description>A lightweight and extensive MenuAPI using Java 8</description>

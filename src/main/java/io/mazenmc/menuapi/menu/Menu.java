@@ -68,10 +68,18 @@ public class Menu implements Listener {
         return items.get(index);
     }
 
+    public Item itemAt(int x, int z) {
+        return items.get(z * 9 + x);
+    }
+
     public Menu setItem(int index, Item item) {
         items.put(index, item);
         inventory.setItem(index, item.stack());
         return this;
+    }
+
+    public Menu setItem(int x, int z, Item item) {
+        return setItem(z * 9 + z, item);
     }
 
     public Menu setParent(Menu parent) {
