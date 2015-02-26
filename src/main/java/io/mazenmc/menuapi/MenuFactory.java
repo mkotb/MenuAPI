@@ -19,6 +19,7 @@ import io.mazenmc.menuapi.items.BasicItem;
 import io.mazenmc.menuapi.items.Item;
 import io.mazenmc.menuapi.items.ItemListener;
 import io.mazenmc.menuapi.menu.Menu;
+import io.mazenmc.menuapi.menu.MultiMenu;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -51,6 +52,22 @@ public final class MenuFactory {
      */
     public static Menu createMenu(String name, int size, Menu parent) {
         return createMenu(name, size).setParent(parent);
+    }
+
+    public static MultiMenu createMultiMenu(String name, int size) {
+        return MultiMenu.create(name, size);
+    }
+
+    public static MultiMenu createMultiMenu(String name, int size, Menu parent) {
+        return (MultiMenu) createMultiMenu(name, size).setParent(parent);
+    }
+
+    public static MultiMenu createMultiMenu(String name, int size, int pages) {
+        return MultiMenu.create(name, size, pages);
+    }
+
+    public static MultiMenu createMultiMenu(String name, int size, int pages, Menu parent) {
+        return (MultiMenu) createMultiMenu(name, size, pages).setParent(parent);
     }
 
     public static Item createItem(ItemStack stack, ItemListener listener) {

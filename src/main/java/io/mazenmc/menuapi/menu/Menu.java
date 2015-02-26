@@ -40,7 +40,7 @@ public class Menu implements Listener {
     private Map<Integer, Item> items = new HashMap<>(); // map for quick lookup
     private Menu parent;
 
-    private Menu(String name, int size) {
+    protected Menu(String name, int size) { // allow for sub classes
         this.name = ChatColor.translateAlternateColorCodes('&', name);
         this.size = size;
 
