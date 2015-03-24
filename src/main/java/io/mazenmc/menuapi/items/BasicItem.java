@@ -41,6 +41,9 @@ public class BasicItem implements Item {
 
     @Override
     public void act(Player player, ClickType clickType) {
+        if (listener == null)
+            return;
+
         listener.act(player, clickType);
     }
 }

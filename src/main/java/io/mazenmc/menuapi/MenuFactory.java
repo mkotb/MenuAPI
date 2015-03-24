@@ -20,18 +20,23 @@ import io.mazenmc.menuapi.items.Item;
 import io.mazenmc.menuapi.items.ItemListener;
 import io.mazenmc.menuapi.menu.Menu;
 import io.mazenmc.menuapi.menu.MultiMenu;
-import net.md_5.bungee.api.ChatColor;
+import io.mazenmc.menuapi.menu.ScrollingMenu;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 
 public final class MenuFactory {
+    public static final ItemListener EMPTY_LISTENER = (ItemListener) MenuFactory::doNothing;
 
     private MenuFactory() {}
+
+    private static void doNothing(Player p, ClickType type) {}
 
     /**
      * Creates a menu with the inputted specifications
@@ -68,6 +73,10 @@ public final class MenuFactory {
 
     public static MultiMenu createMultiMenu(String name, int size, int pages, Menu parent) {
         return (MultiMenu) createMultiMenu(name, size, pages).setParent(parent);
+    }
+
+    public static ScrollingMenu createScrollingMenu(String name) {
+        return ScrollingMenu.create(name);
     }
 
     public static Item createItem(ItemStack stack, ItemListener listener) {

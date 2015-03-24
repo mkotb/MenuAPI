@@ -36,11 +36,11 @@ public final class MultiMenu extends Menu {
 
     protected Menu[] menus;
 
-    private MultiMenu(String name, int size) {
+    protected MultiMenu(String name, int size) {
         this(name, size, 5);
     }
 
-    private MultiMenu(String name, int size, int pages) {
+    protected MultiMenu(String name, int size, int pages) {
         super(name, size);
 
         menus = new Menu[pages];
@@ -74,7 +74,7 @@ public final class MultiMenu extends Menu {
         return new MultiMenu(name, size, pages);
     }
 
-    private static void setName(ItemStack stack, String name) {
+    static void setName(ItemStack stack, String name) {
         ItemMeta meta = stack.getItemMeta();
 
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));

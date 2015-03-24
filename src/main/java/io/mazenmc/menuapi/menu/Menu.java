@@ -26,6 +26,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -37,7 +38,7 @@ public class Menu implements Listener {
     private String name;
     private int size;
     private Inventory inventory;
-    private Map<Integer, Item> items = new HashMap<>(); // map for quick lookup
+    protected Map<Integer, Item> items = new HashMap<>(); // map for quick lookup
     private Menu parent;
 
     protected Menu(String name, int size) { // allow for sub classes
@@ -101,7 +102,14 @@ public class Menu implements Listener {
      * @param item The item you wish to set the index as
      */
     public Menu setItem(int index, Item item) {
-        inventory.setItem(index, item.stack());
+        if (item == null) {
+            inventory.remove(index);
+            System.out.println("removed item at "+ index);
+        } else {
+            inventory.setItem(index, item.stack());
+            System.out.println("set item in inventory");
+        }
+
         items.put(index, item);
         return this;
     }
