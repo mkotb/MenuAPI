@@ -103,7 +103,7 @@ public class Menu implements Listener {
      */
     public Menu setItem(int index, Item item) {
         if (item == null) {
-            inventory.remove(index);
+            inventory.setItem(index, null);
         } else {
             inventory.setItem(index, item.stack());
         }
