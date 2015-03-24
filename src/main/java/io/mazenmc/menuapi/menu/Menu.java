@@ -104,10 +104,8 @@ public class Menu implements Listener {
     public Menu setItem(int index, Item item) {
         if (item == null) {
             inventory.remove(index);
-            System.out.println("removed item at "+ index);
         } else {
             inventory.setItem(index, item.stack());
-            System.out.println("set item in inventory");
         }
 
         items.put(index, item);

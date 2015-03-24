@@ -67,8 +67,6 @@ public class ScrollingMenu extends Menu {
 
         MultiMenu.setName(scrollUp, canScrollUp ? "&6Scroll up" : "&8Cannot scroll up!");
         pushItem(0, 0, MenuFactory.createItem(scrollUp, (player, type) -> scrollUp(player)));
-
-        System.out.println("updated buttons");
     }
 
     private int highestIndex() {
