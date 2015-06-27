@@ -45,13 +45,15 @@ public final class MultiMenu extends Menu {
 
         menus = new Menu[pages];
 
-        setMenu(0, this); // this menu is the front page
+        menus[0] = this; // this menu is the front page
         setName(next, "&3Next");
         setName(back, "&3Back");
 
         for (int i = 1; i < pages; i++) {
-            setMenu(i, EMPTY_MENU);
+            menus[i] = EMPTY_MENU;
         }
+        
+        updateMenus();
     }
 
     /**
