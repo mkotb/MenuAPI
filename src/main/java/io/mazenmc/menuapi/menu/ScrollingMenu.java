@@ -20,7 +20,6 @@ import io.mazenmc.menuapi.items.Item;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -90,7 +89,7 @@ public class ScrollingMenu extends Menu {
     public void scrollDown(Player player) {
         if (!canScroll(ScrollDirection.DOWN)) {
             if (player != null) {
-                player.playSound(player.getLocation(), Sound.CREEPER_HISS, 25, 50);
+                player.playSound(player.getLocation(), Sound.ENTITY_CREEPER_HURT, 25, 50);
             }
 
             return;
@@ -100,7 +99,7 @@ public class ScrollingMenu extends Menu {
         flush();
 
         if (player != null) {
-            player.playSound(player.getLocation(), Sound.CLICK, 50, 50);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 50, 50);
         }
     }
 
@@ -111,7 +110,7 @@ public class ScrollingMenu extends Menu {
     public void scrollUp(Player player) {
         if (index == 0) {
             if (player != null) {
-                player.playSound(player.getLocation(), Sound.CREEPER_HISS, 25, 50);
+                player.playSound(player.getLocation(), Sound.ENTITY_CREEPER_HURT, 25, 50);
             }
 
             return;
@@ -121,7 +120,7 @@ public class ScrollingMenu extends Menu {
         flush();
 
         if (player != null) {
-            player.playSound(player.getLocation(), Sound.CLICK, 50, 50);
+            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 50, 50);
         }
     }
 

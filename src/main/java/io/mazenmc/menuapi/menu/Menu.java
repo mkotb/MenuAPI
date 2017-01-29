@@ -20,17 +20,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Menu implements Listener {
     private static final JavaPlugin OWNER = JavaPlugin.getProvidingPlugin(Menu.class);
@@ -160,7 +159,7 @@ public class Menu implements Listener {
         if(!event.getInventory().equals(inventory))
             return;
 
-        if(event.getRawSlot() >= size)
+        if(event.getRawSlot() >= size && !event.getClick().isShiftClick())
             return;
 
         event.setCancelled(true);
